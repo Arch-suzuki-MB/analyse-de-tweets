@@ -1,0 +1,33 @@
+#####################################################################################################################
+
+les etapes a suivi pour utiliser kafka
+
+#####################################################################################################################
+
+//demarer zookeeper
+
+.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+//demarer le serveur de kafka
+
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+//creer un sujet (topic)
+
+.\bin\windows\kafka-topics.bat --create --topic test --bootstrap-server localhost:9092
+
+//creer un producteur (producer)
+
+.\bin\windows\kafka-console-producer.bat --topic test--bootstrap-server localhost:9092
+.\bin\windows\kafka-console-producer.bat --topic test --bootstrap-server localhost:9092
+
+//creer un consommateur(consummer)
+
+.\bin\windows\kafka-console-consumer.bat --topic test --bootstrap-server localhost:9092
+
+//afficher le resultat dans le console
+
+.\bin\windows\kafka-console-consumer.bat --topic test --from-beginning --bootstrap-server localhost:9092
+
+//lancer spark 
+spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.0.1  spark.py
